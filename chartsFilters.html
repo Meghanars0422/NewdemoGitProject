@@ -1,0 +1,123 @@
+<p class="filter-label" id="{{graphName}}-filterLabel" ng-click="toggleFilter({data: graphName})">Filters
+    <a class="icon-down-arrow" ng-if="!filterLabel.performaceGraph"></a>
+    <a class="icon-up-arrow" ng-if="filterLabel.performaceGraph"></a>
+</p>
+<div class="filters-buttons expand-filter" id="performanceFilterBtnSec" ng-if="filterLabel[graphName]">                                
+    <!-- <span class="btn btn-filter-default" id="{{graphName}}-monthly-filter" ng-click="setFilter({data:'monthly', graph: graphName})">Monthly</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-quaterly-filter" ng-click="setFilter({data:'quaterly', graph: graphName})">Quaterly</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-halfyearly-filter" ng-click="setFilter({data:'halfyearly', graph: graphName})">Half-yearly</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-annually-filter" ng-click="setFilter({data:'annually', graph: graphName})">Yearly</span> -->
+
+    <span class="btn btn-filter-default" id="{{graphName}}-period-filter" ng-click="setFilter({data:'period', graph: graphName})">Period</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-display-filter" ng-click="setFilter({data:'display', graph: graphName})">Display Data</span>
+    <!-- <span class="btn btn-filter-default active" id="{{graphName}}-overall-filter" ng-click="setFilter({data:'overall', graph: graphName})">Overall</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-zone-filter" ng-click="setFilter({data:'zone', graph: graphName})">Zone</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-region-filter" ng-click="setFilter({data:'region', graph: graphName})">Region</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-branch-filter" ng-click="setFilter({data:'branch', graph: graphName})">Branch</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-role-filter" ng-click="setFilter({data:'role', graph: graphName})">Role</span>
+    <span class="btn btn-filter-default" id="{{graphName}}-employee-filter" ng-click="setFilter({data:'employee', graph: graphName})">Employee ID</span> -->
+</div>
+
+<div class="filter-option-section" style="margin-top:0px;" ng-If="chartFilters[graphName].periodSelected || chartFilters[graphName].displaySelected">
+    <hr style="margin:5px 0px 0px 0px;">
+    <div class="matInputContainer col-xs-6" ng-if="chartFilters[graphName].periodSelected">
+        <!-- <select ng-change="_filterDataByMonth()" ng-model="chartFilterDataObj[graphName].displaySelected">
+            <option value="">Period</option>
+            <option value="monthly" ng-model="chartFilterDataObj[graphName].displaySelected" id="{{graphName}}-monthly-filter" ng-change="setFilter({data:'monthly', graph: graphName})">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="halfyearly">Half-yearly</option>
+            <option value="yearly">Yearly</option>
+             <option ng-repeat="item in periods" value="{{item.id}}">
+                {{ item.value }}
+            </option> ng-options="item.value for item in periods"
+        </select> -->
+        <select ng-model="item.value" ng-change="setFilter({data:(item.value), graph: graphName});">
+            <option value="">--Select--</option>
+            <option ng-repeat="item in periods" id="{{graphName}}-{{item.value}}-filter" value="{{item.value}}">
+                {{ item.value }}
+            </option>
+        </select>
+    </div>
+    <div class="matInputContainer col-xs-6" ng-if="chartFilters[graphName].displaySelected">
+        <select ng-change="_filterDataByMonth()" ng-model="chartFilterDataObj[graphName].displaySelected" ng-init="chartFilterDataObj[graphName].displaySelected = ''">
+            <option value="">Display data by</option>
+            <option value="generated">Generated</option>
+            <option value="converted">Converted</option>
+            <option value="both">Both</option>
+            <!-- <option ng-repeat="item in displays" value="{{item.id}}">
+                {{ item.value }}
+            </option> -->
+        </select>
+    </div>
+
+    <!-- <div class="matInputContainer col-xs-6" ng-if="chartFilters[graphName].monthSelected">
+        <select ng-change="_filterDataByMonth()" ng-model="chartFilterDataObj[graphName].monthSelected" ng-init="chartFilterDataObj[graphName].monthSelected = ''">
+            <option value="">Select Month</option>
+            <option ng-repeat="item in months" value="{{item.id}}">
+                {{ item.value }}
+            </option>
+        </select>
+    </div> -->
+
+    <div class="matInputContainer col-xs-6" ng-if="chartFilters[graphName].monthSelected">
+        <select ng-model="item.id" ng-change="setMonth({data:(item.id)});">
+            <option value="">Select Month</option>
+            <option ng-repeat="item in months" value="{{item.id}}">
+                {{ item.value }}
+            </option>
+        </select>
+        <select ng-model="year.value" ng-change="setYear({data:(year.value)});">
+            <option value="">Select year</option>
+            <option ng-repeat="year in previousYears" value="{{year.value}}">
+                {{ year.value }}
+            </option>
+        </select>
+    </div>
+    <div  class="matInputContainer col-xs-6" ng-show="chartFilters[graphName].quaterlySelected" >
+       <select id="quarterselect" ng-model="quarter.value" ng-change="setQuarter({data:(quarter.value)});">
+            <option value="">Select Quarter</option>
+            <option ng-repeat="quarter in quarterMonths" value="{{quarter.id}}">
+                {{ quarter.value }}
+            </option>
+        </select>
+        <select id="getyear" ng-model="year.value" ng-change="setYear({data:(year.value)});">
+            <option value="">Select year</option>
+            <option ng-repeat="year in previousYears" value="{{year.value}}">
+                {{ year.value }}
+            </option>
+        </select>
+    </div>
+    <div class="matInputContainer col-xs-6" ng-show="chartFilters[graphName].halfyearlySelected">
+        <select ng-change="_filterDataByMonth()" ng-model="chartFilterDataObj[graphName].halfyearlySelected" ng-init="chartFilterDataObj[graphName].halfyearlySelected = ''">
+            <option value="">Select halfYear</option>
+            <option ng-repeat="item in halfFinancialYears" value="{{item.id}}">
+                {{ item.value }}
+            </option>
+        </select>
+    </div>
+    <div class="matInputContainer col-xs-6" ng-show="chartFilters[graphName].annuallySelected">
+        <select ng-change="_filterDataByMonth()" ng-model="chartFilterDataObj[graphName].annuallySelected" ng-init="chartFilterDataObj[graphName].annuallySelected = ''">
+            <option value="">Select Financial year</option>
+            <option ng-repeat="item in financialYears" value="{{item.id}}">
+                {{ item.value }}
+            </option>
+        </select>
+    </div>
+    <!-- <div class="matInputContainer col-xs-6" ng-show="chartFilters[graphName].roleSelected" >
+        <select ng-model="chartFilterDataObj[graphName].roleSelected" ng-init="chartFilterDataObj[graphName].roleSelected = ''">
+            <option value="">Select Role</option>
+            <option ng-repeat="item in roleList" value="{{item.value}}">
+                {{ item.value }}
+            </option>
+        </select>
+    </div>
+    <div class="matInputContainer col-xs-6" ng-show="chartFilters[graphName].employeeSelected"  >
+        <div class="mat-div">
+            <label for="employeeSelected" class="mat-label mat-labelType2">Enter EmployeeId</label>
+            <input type="text" class="mat-input" id="" ng-model="chartFilterDataObj[graphName].employeeSelected" ng-init="chartFilterDataObj[graphName].employeeSelected = ''">
+        </div>
+    </div> -->
+    <div class="col-xs-12 filter-submit-button-container" ng-If="chartFilters[graphName].monthSelected || chartFilters[graphName].quaterlySelected || chartFilters[graphName].halfyearlySelected || chartFilters[graphName].annuallySelected">
+        <button class="filter-submit-button" ng-click="generateFilterBasedGraph({graph:graphName})">Submit</button>
+    </div>   
+</div>  

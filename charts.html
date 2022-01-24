@@ -1,0 +1,108 @@
+<div class="desktop_container">
+    <div class="dashboard">
+        <div class="container">
+            <!-- <div class="panel panel-default viewLead col-md-12 col-xs-12 col-sm-12 clearfix leadountDivSlick">
+                <div class="page-header">
+                    <span class="orange icon-lead"></span>
+                    <span class="performanceHeader">graphs</span>
+                </div>
+                <div class="panel-body"  ng-controller="performanceGraphController"> 
+                    <div class="performance-chart-back-btn-container" ng-if="performanceChartBackBtnActive">
+                        <i class="icon-back" ng-click="showPerformanceDoughnutChart()"></i>
+                    </div>
+                    <div class="row" id="performance-chart-container" style="width:400px !important;display: flex;margin: auto;">
+                        <canvas id="performance-chart" ></canvas>      
+                    </div>
+                    <div class="row" id="performance-drilled-chart-container" style="display: flex;margin: auto;">
+                        <canvas id="performance-drilled-chart" ></canvas>      
+                    </div>
+                    <div class="performance-filter">
+                        <chart-filter generate-filterbasedgraph="generateFilterBasedGraph(graph)" toggle-filter="toggleFilter(data)" set-filter="setFilter(data, graph)" filter-Label="filterLabel" chart-filters="chartFilters" chart-filterdataobj="chartFilterDataObj" graph-name="'performanceGraph'" months="months" role-list="roleList"></chart-filter>
+                    </div>                    
+                </div>
+            </div> -->
+
+            <div class="panel panel-default viewLead col-md-12 col-xs-12 col-sm-12 clearfix leadountDivSlick">
+                <div class="page-header">
+                    <span class="orange icon-lead"></span>
+                    <span class="performanceHeader">graphs</span>
+                </div>
+                <div class="panel-body" ng-controller="topBottomGraphController">
+                    <!-- <div class="toggle-btn">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="topbottom-toggle-btn" ng-model="topBottomGraph.value"
+                                ng-change="changePerformane()">
+                            <span class="toggle-slider round"></span>
+                        </label>
+                    </div> -->
+                    <canvas id="top-bottom-performance-chart"></canvas>
+
+                    <span class="lead-additional-detail-export-btn" ng-click="export()">
+                    <div class="tooltip">
+                        <img src="assets/images/ffile-export-blue.svg" style="width:23px;cursor: pointer;">
+                        <span class="tooltiptext">Export to Excel file</span>
+                    </div>
+                </span>
+                    <!-- <canvas id="top-bottom-performance-charts"></canvas> -->
+                    <div class="performance-filter">
+                        <chart-filter generate-filterbasedgraph="generateFilterBasedGraph(graph)"
+                            toggle-filter="toggleFilter(data)" set-filter="setFilter(data, graph)"
+                            filter-Label="filterLabel" chart-filters="chartFilters"
+                            chart-filterdataobj="chartFilterDataObj" graph-name="'topBottomGraph'" months="months"
+                            all-values="previousYears" role-list="roleList" all-financial-values="financialYears"
+                            all-half-values="halfFinancialYears" all-periods-values="periods"
+                            all-display-values="displays" all-quarter-months="quarterMonths" set-month="setMonth(data)"
+                            set-year="setYear(data)" set-quarter="setQuarter(data)"></chart-filter>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- <div class="panel panel-default viewLead col-md-12 col-xs-12 col-sm-12 clearfix leadountDivSlick">
+                <div class="page-header">
+                    <span class="orange icon-lead"></span>
+                    <span class="performanceHeader">graphs</span>
+                </div>
+                <div class="panel-body ">           
+                    <canvas id="product-sold-performance-chart"></canvas>         
+                    <div class="performance-filter">
+                        <p class="filter-label" id="filterLabel" ng-click="toggleFilter()">Filters
+                            <a class="icon-down-arrow" ng-if="!isPerformanceFilterActive"></a>
+                            <a class="icon-up-arrow" ng-if="isPerformanceFilterActive"></a>
+                        </p>
+                        <div class="filters-buttons expand-filter" id="performanceFilterBtnSec" ng-if="isPerformanceFilterActive">                                   
+                            <span class="btn btn-filter-default" id="monthly-filter" ng-click="setFilter('monthly')">Monthly</span>
+                            <span class="btn btn-filter-default" id="quaterly-filter" ng-click="setFilter('quaterly')">Quaterly</span>
+                            <span class="btn btn-filter-default" id="annually-filter" ng-click="setFilter('annually')">Annually</span>
+                            <span class="btn btn-filter-default active" id="overall-filter" ng-click="setFilter('overall')">Overall</span>
+                            <span class="btn btn-filter-default" id="zone-filter" ng-click="setFilter('zone')">Zone</span>
+                            <span class="btn btn-filter-default" id="region-filter" ng-click="setFilter('region')">Region</span>
+                            <span class="btn btn-filter-default" id="branch-filter" ng-click="setFilter('branch')">Branch</span>
+                            <span class="btn btn-filter-default" id="role-filter" ng-click="setFilter('role')">Role</span>
+                            <span class="btn btn-filter-default" id="employee-filter" ng-click="setFilter('employee')">Employee ID</span>
+                        </div>
+                        <div class="filter-option-section">                           
+                            <div class="" ng-if="zoneSelected" >
+                            </div>                           
+                        </div>                    
+                    </div>   
+                </div>
+            </div> -->
+
+            <!-- doghnut chat -->
+            <!-- <div class="panel panel-default viewLead col-md-12 col-xs-12 col-sm-12 clearfix leadountDivSlick">
+                <div class="page-header">
+                    <span class="orange icon-lead"></span>
+                    <span class="performanceHeader">graphs</span>
+                </div>
+                <div class="panel-body" ng-controller="productSoldGraphController">           
+                    <canvas id="product-sold-performance-chart-doughnut"></canvas>         
+                    <div class="performance-filter">
+                        <chart-filter generate-filterbasedgraph="generateFilterBasedGraph(graph)" toggle-filter="toggleFilter(data)" set-filter="setFilter(data, graph)" filter-Label="filterLabel" chart-filters="chartFilters" chart-filterdataobj="chartFilterDataObj" graph-name="'productSoldGraph'" months="months" role-list="roleList"></chart-filter>
+                    </div>   
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</div>
