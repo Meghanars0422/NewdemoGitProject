@@ -1,0 +1,150 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red202\green202\blue202;\red194\green126\blue101;\red23\green23\blue23;
+\red140\green211\blue254;\red212\green214\blue154;\red70\green137\blue204;\red183\green111\blue179;\red67\green192\blue160;
+}
+{\*\expandedcolortbl;;\cssrgb\c83137\c83137\c83137;\cssrgb\c80784\c56863\c47059;\cssrgb\c11765\c11765\c11765;
+\cssrgb\c61176\c86275\c99608;\cssrgb\c86275\c86275\c66667;\cssrgb\c33725\c61176\c83922;\cssrgb\c77255\c52549\c75294;\cssrgb\c30588\c78824\c69020;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf3 \cb4 \strokec3 "use strict"\cf2 \strokec2 ;\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf5 \cb4 \strokec5 angular\cf2 \strokec2 .\cf6 \strokec6 module\cf2 \strokec2 (\cf3 \strokec3 "Ananya.leads"\cf2 \strokec2 ).\cf6 \strokec6 service\cf2 \strokec2 (\cf3 \strokec3 "creditReportService"\cf2 \strokec2 , [\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \cb4   \cf3 \strokec3 "$rootScope"\cf2 \strokec2 ,\cb1 \
+\cb4   \cf3 \strokec3 "$resource"\cf2 \strokec2 ,\cb1 \
+\cb4   \cf3 \strokec3 "appConfig"\cf2 \strokec2 ,\cb1 \
+\cb4   \cf3 \strokec3 "encrypt"\cf2 \strokec2 ,\cb1 \
+\cb4   \cf3 \strokec3 "decrypt"\cf2 \strokec2 ,\cb1 \
+\cb4   \cf3 \strokec3 "$log"\cf2 \strokec2 ,\cb1 \
+\cb4   \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 $rootScope\cf2 \strokec2 , \cf5 \strokec5 $resource\cf2 \strokec2 , \cf5 \strokec5 appConfig\cf2 \strokec2 , \cf5 \strokec5 encrypt\cf2 \strokec2 , \cf5 \strokec5 decrypt\cf2 \strokec2 , \cf5 \strokec5 $log\cf2 \strokec2 ) \{\cb1 \
+\cb4     \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 creditReportData\cf2 \strokec2  = \cf7 \strokec7 null\cf2 \strokec2 ;\cb1 \
+\cb4     \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 requestCreditObj\cf2 \strokec2  = \cf7 \strokec7 null\cf2 \strokec2 ;\cb1 \
+\cb4     \cf8 \strokec8 return\cf2 \strokec2  \{\cb1 \
+\cb4       \cf6 \strokec6 setCreditFormData\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 data\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf5 \strokec5 creditReportData\cf2 \strokec2  = \cf5 \strokec5 data\cf2 \strokec2 ;\cb1 \
+\cb4       \},\cb1 \
+\
+\cb4       \cf6 \strokec6 getCreditReportFromData\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  () \{\cb1 \
+\cb4         \cf8 \strokec8 return\cf2 \strokec2  \cf5 \strokec5 creditReportData\cf2 \strokec2 ;\cb1 \
+\cb4       \},\cb1 \
+\
+\cb4       \cf6 \strokec6 setRetailRequestData\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 data\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf5 \strokec5 requestCreditObj\cf2 \strokec2  = \cf5 \strokec5 data\cf2 \strokec2 ;\cb1 \
+\cb4       \},\cb1 \
+\
+\cb4       \cf6 \strokec6 getRetailRequestData\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  () \{\cb1 \
+\cb4         \cf8 \strokec8 return\cf2 \strokec2  \cf5 \strokec5 requestCreditObj\cf2 \strokec2 ;\cb1 \
+\cb4       \},\cb1 \
+\cb4       \cf6 \strokec6 getParameters\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 callback\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 requestAPI\cf2 \strokec2  = \cf6 \strokec6 $resource\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 appConfig\cf2 \strokec2 .\cf5 \strokec5 apiBaseURL\cf2 \strokec2  + \cf3 \strokec3 "/RetailParamSubParamList"\cf2 \strokec2 ,\cb1 \
+\cb4           \{\},\cb1 \
+\cb4           \{\cb1 \
+\cb4             \cf5 \strokec5 Check:\cf2 \strokec2  \{\cb1 \
+\cb4               \cf5 \strokec5 method:\cf2 \strokec2  \cf3 \strokec3 "GET"\cf2 \cb1 \strokec2 \
+\cb4             \}\cb1 \
+\cb4           \}\cb1 \
+\cb4         );\cb1 \
+\cb4         \cf5 \strokec5 requestAPI\cf2 \strokec2 .\cf6 \strokec6 Check\cf2 \strokec2 (\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 response\cf2 \strokec2 ) \{\cb1 \
+\cb4             \cf6 \strokec6 callback\cf2 \strokec2 (\cf5 \strokec5 response\cf2 \strokec2 );\cb1 \
+\cb4           \},\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 err\cf2 \strokec2 ) \{ \}\cb1 \
+\cb4         );\cb1 \
+\
+\cb4       \},\cb1 \
+\cb4       \cf6 \strokec6 addRetailDetails\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 retail_details\cf2 \strokec2 , \cf5 \strokec5 callback\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf5 \strokec5 console\cf2 \strokec2 .\cf6 \strokec6 log\cf2 \strokec2 (\cf5 \strokec5 retail_details\cf2 \strokec2 )\cb1 \
+\cb4         \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 requestAPI\cf2 \strokec2  = \cf6 \strokec6 $resource\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 appConfig\cf2 \strokec2 .\cf5 \strokec5 apiBaseURL\cf2 \strokec2  + \cf3 \strokec3 "/AddRetailDetails"\cf2 \strokec2 ,\cb1 \
+\cb4           \{\},\cb1 \
+\cb4           \{\cb1 \
+\cb4             \cf5 \strokec5 Check:\cf2 \strokec2  \{\cb1 \
+\cb4               \cf5 \strokec5 method:\cf2 \strokec2  \cf3 \strokec3 "POST"\cf2 \cb1 \strokec2 \
+\cb4             \}\cb1 \
+\cb4           \}\cb1 \
+\cb4         );\cb1 \
+\cb4         \cf5 \strokec5 requestAPI\cf2 \strokec2 .\cf6 \strokec6 Check\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 retail_details\cf2 \strokec2 ,\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 response\cf2 \strokec2 ) \{\cb1 \
+\cb4             \cf6 \strokec6 callback\cf2 \strokec2 (\cf5 \strokec5 response\cf2 \strokec2 );\cb1 \
+\cb4           \},\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 err\cf2 \strokec2 ) \{ \}\cb1 \
+\cb4         );\cb1 \
+\cb4       \},\cb1 \
+\cb4       \cf6 \strokec6 getRetailDetails\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 retail_details\cf2 \strokec2 , \cf5 \strokec5 callback\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 requestAPI\cf2 \strokec2  = \cf6 \strokec6 $resource\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 appConfig\cf2 \strokec2 .\cf5 \strokec5 apiBaseURL\cf2 \strokec2  + \cf3 \strokec3 "/GetRetailDetails"\cf2 \strokec2 ,\cb1 \
+\cb4           \{\},\cb1 \
+\cb4           \{\cb1 \
+\cb4             \cf5 \strokec5 Check:\cf2 \strokec2  \{\cb1 \
+\cb4               \cf5 \strokec5 method:\cf2 \strokec2  \cf3 \strokec3 "POST"\cf2 \cb1 \strokec2 \
+\cb4             \}\cb1 \
+\cb4           \}\cb1 \
+\cb4         );\cb1 \
+\cb4         \cf5 \strokec5 requestAPI\cf2 \strokec2 .\cf6 \strokec6 Check\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 retail_details\cf2 \strokec2 ,\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 response\cf2 \strokec2 ) \{\cb1 \
+\cb4             \cf6 \strokec6 callback\cf2 \strokec2 (\cf5 \strokec5 response\cf2 \strokec2 );\cb1 \
+\cb4           \},\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 err\cf2 \strokec2 ) \{ \}\cb1 \
+\cb4         );\cb1 \
+\cb4       \},\cb1 \
+\cb4       \cf6 \strokec6 getRetailGradeList\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 callback\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 requestAPI\cf2 \strokec2  = \cf6 \strokec6 $resource\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 appConfig\cf2 \strokec2 .\cf5 \strokec5 apiBaseURL\cf2 \strokec2  + \cf3 \strokec3 "/RetailScoreGradeList"\cf2 \strokec2 ,\cb1 \
+\cb4           \{\},\cb1 \
+\cb4           \{\cb1 \
+\cb4             \cf5 \strokec5 Check:\cf2 \strokec2  \{\cb1 \
+\cb4               \cf5 \strokec5 method:\cf2 \strokec2  \cf3 \strokec3 "GET"\cf2 \cb1 \strokec2 \
+\cb4             \}\cb1 \
+\cb4           \}\cb1 \
+\cb4         );\cb1 \
+\cb4         \cf5 \strokec5 requestAPI\cf2 \strokec2 .\cf6 \strokec6 Check\cf2 \strokec2 (\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 response\cf2 \strokec2 ) \{\cb1 \
+\cb4             \cf6 \strokec6 callback\cf2 \strokec2 (\cf5 \strokec5 response\cf2 \strokec2 );\cb1 \
+\cb4           \},\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 err\cf2 \strokec2 ) \{ \}\cb1 \
+\cb4         );\cb1 \
+\
+\cb4       \},\cb1 \
+\cb4      \cb1 \
+\cb4       \cf6 \strokec6 sendEmailWithAttachment\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 data\cf2 \strokec2 , \cf5 \strokec5 callback\cf2 \strokec2 ) \{\cb1 \
+\cb4         \cf5 \strokec5 console\cf2 \strokec2 .\cf6 \strokec6 log\cf2 \strokec2 (\cf5 \strokec5 data\cf2 \strokec2 )\cb1 \
+\cb4         \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 payload\cf2 \strokec2  = \cf7 \strokec7 new\cf2 \strokec2  \cf9 \strokec9 FormData\cf2 \strokec2 ();\cb1 \
+\cb4         \cf5 \strokec5 payload\cf2 \strokec2 .\cf6 \strokec6 append\cf2 \strokec2 (\cf3 \strokec3 "grade"\cf2 \strokec2 , \cf5 \strokec5 data\cf2 \strokec2 .\cf5 \strokec5 array\cf2 \strokec2 , \cf5 \strokec5 data\cf2 \strokec2 .\cf5 \strokec5 filename\cf2 \strokec2 );\cb1 \
+\cb4         \cf5 \strokec5 console\cf2 \strokec2 .\cf6 \strokec6 log\cf2 \strokec2 (\cf5 \strokec5 payload\cf2 \strokec2 )\cb1 \
+\cb4         \cf5 \strokec5 payload\cf2 \strokec2 .\cf6 \strokec6 append\cf2 \strokec2 (\cf3 \strokec3 'toaddress'\cf2 \strokec2 , \cf5 \strokec5 data\cf2 \strokec2 .\cf5 \strokec5 email\cf2 \strokec2 );\cb1 \
+\cb4         \cf5 \strokec5 console\cf2 \strokec2 .\cf6 \strokec6 log\cf2 \strokec2 (\cf5 \strokec5 payload\cf2 \strokec2 )\cb1 \
+\cb4         \cf7 \strokec7 var\cf2 \strokec2  \cf5 \strokec5 requestAPI\cf2 \strokec2  = \cf6 \strokec6 $resource\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 appConfig\cf2 \strokec2 .\cf5 \strokec5 apiBaseURL\cf2 \strokec2  + \cf3 \strokec3 "/SendEmailWithAttachment"\cf2 \strokec2 ,\cb1 \
+\cb4           \{\},\cb1 \
+\cb4           \{\cb1 \
+\cb4             \cf5 \strokec5 Check:\cf2 \strokec2  \{\cb1 \
+\cb4               \cf5 \strokec5 method:\cf2 \strokec2  \cf3 \strokec3 "POST"\cf2 \strokec2 ,\cb1 \
+\cb4               \cf5 \strokec5 headers:\cf2 \strokec2  \{\cf3 \strokec3 "Content-Type"\cf5 \strokec5 :\cf2 \strokec2  \cf7 \strokec7 undefined\cf2 \strokec2  \},\cb1 \
+\cb4               \cf5 \strokec5 data:\cf2 \strokec2  \cf5 \strokec5 payload\cf2 \strokec2 ,\cb1 \
+\cb4             \}\cb1 \
+\cb4           \}\cb1 \
+\cb4         );\cb1 \
+\cb4         \cf5 \strokec5 requestAPI\cf2 \strokec2 .\cf6 \strokec6 Check\cf2 \strokec2 (\cb1 \
+\cb4           \cf5 \strokec5 payload\cf2 \strokec2 ,\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 response\cf2 \strokec2 ) \{\cb1 \
+\cb4             \cf6 \strokec6 callback\cf2 \strokec2 (\cf5 \strokec5 response\cf2 \strokec2 );\cb1 \
+\cb4             \cf5 \strokec5 console\cf2 \strokec2 .\cf6 \strokec6 log\cf2 \strokec2 (\cf5 \strokec5 response\cf2 \strokec2 )\cb1 \
+\cb4           \},\cb1 \
+\cb4           \cf7 \strokec7 function\cf2 \strokec2  (\cf5 \strokec5 err\cf2 \strokec2 ) \{ \}\cb1 \
+\cb4         );\cb1 \
+\cb4       \},\cb1 \
+\cb4     \}\cb1 \
+\cb4   \}\cb1 \
+\cb4 ]);\cb1 \
+}
